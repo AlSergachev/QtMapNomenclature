@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtMapNomenclature", "QtMapNomenclature\QtMapNomenclature.vcxproj", "{A7B38224-D3E7-403B-9E4B-19D6899B7205}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7B38224-D3E7-403B-9E4B-19D6899B7205}.Debug|x64.ActiveCfg = Debug|x64
+		{A7B38224-D3E7-403B-9E4B-19D6899B7205}.Debug|x64.Build.0 = Debug|x64
+		{A7B38224-D3E7-403B-9E4B-19D6899B7205}.Release|x64.ActiveCfg = Release|x64
+		{A7B38224-D3E7-403B-9E4B-19D6899B7205}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62D9F58D-FE90-44AB-BDDA-9287CBEADDC8}
+	EndGlobalSection
+EndGlobal
