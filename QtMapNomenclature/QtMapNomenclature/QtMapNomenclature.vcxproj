@@ -83,7 +83,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="QtSecondWidget.cpp" />
-    <QtRcc Include="QtMapNomenclature.qrc" />
     <QtUic Include="QtMapNomenclature.ui" />
     <QtMoc Include="QtMapNomenclature.h" />
     <ClCompile Include="QtMapNomenclature.cpp" />
@@ -92,6 +91,15 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtSecondWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QtMapNomenclature.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

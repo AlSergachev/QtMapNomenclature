@@ -46,11 +46,23 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="QtMapNomenclature.qrc" />
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="QtSecondWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QtMapNomenclature.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

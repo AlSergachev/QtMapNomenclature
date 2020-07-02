@@ -33,28 +33,29 @@ public:
 	if (side == "north")
 	{
 		UU->ui.label_Ngr->setText(tVgrad);
-		UU->ui.label_Nmin->setText(tVgrad);
-		UU->ui.label_Nsec->setText(tVgrad);
+		UU->ui.label_Nmin->setText(tVmin);
+		UU->ui.label_Nsec->setText(tVsec);
 	}
 	else if (side == "south")
 	{
 		UU->ui.label_Sgr->setText(tVgrad);
-		UU->ui.label_Smin->setText(tVgrad);
-		UU->ui.label_Ssec->setText(tVgrad);
+		UU->ui.label_Smin->setText(tVmin);
+		UU->ui.label_Ssec->setText(tVsec);
 	}
 	else if (side == "west")
 	{
 		UU->ui.label_Wgr->setText(tVgrad);
-		UU->ui.label_Wmin->setText(tVgrad);
-		UU->ui.label_Wsec->setText(tVgrad);
+		UU->ui.label_Wmin->setText(tVmin);
+		UU->ui.label_Wsec->setText(tVsec);
 	}
 	else if (side == "east")
 	{
 		UU->ui.label_Egr->setText(tVgrad);
-		UU->ui.label_Emin->setText(tVgrad);
-		UU->ui.label_Esec->setText(tVgrad);
+		UU->ui.label_Emin->setText(tVmin);
+		UU->ui.label_Esec->setText(tVsec);
 	}
-	else /*cout << "ERROR"*/;
+	else
+		QMessageBox::warning(UU, "Error", "Coordinates output error");
 }
 
 	char StringNumber(double &x, double &y)			 //определяет номер строки квадрата М 1:1 000 000
@@ -131,16 +132,16 @@ public:
 		else
 			/*cout << "ERROR\n"*/;
 	}
-	void getBorder(double &x, double &y)			//Выводит значения рамок квадрата
+	void getBorder(double &x, double &y, QtSecondWidget *th_s)			//Выводит значения рамок квадрата
 	{
 		double north_border = setBorder(x, y, "north");
 		double south_border = setBorder(x, y, "south");
 		double west_border = setBorder(x, y, "west");
 		double east_border = setBorder(x, y, "east");
-		coordinateTransformation(north_border, "north");
-		//coordinateTransformation(south_border, "south");
-		//coordinateTransformation(west_border, "west");
-		//coordinateTransformation(east_border, "east");
+		coordinateTransformation(north_border, "north", th_s);
+		coordinateTransformation(south_border, "south", th_s);
+		coordinateTransformation(west_border, "west", th_s);
+		coordinateTransformation(east_border, "east", th_s);
 	}
 };
 
@@ -158,7 +159,7 @@ QtSecondWidget::QtSecondWidget(double &x, double &y, QWidget *parent)
 	char N1 = MyMapOM.StringNumber(x, y);
 	double east2 = MyMapOM.setBorder(x, y, "east");
 	double north2 = MyMapOM.setBorder(x, y, "north");
-	MyMapOM.getBorder(x, y);
+	MyMapOM.getBorder(x, y, this);
 
 	QN1 = N1;
 	QN2.setNum(N2);
