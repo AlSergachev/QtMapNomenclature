@@ -2,22 +2,19 @@
 #include "QtMapNomenclature.h"
 
 
+One_million::One_million(double m_sx, double m_sy, double &x, double &y, QtSecondWidget* UU)
+	: QtSecondWidget(x, y)
+{
+	sx = m_sx;
+	sy = m_sy;
+	int columnNumber = 0;
+	int stringNumber = 0;
+	int z = 0;
+	int m = 0;
+	int n = 0;
+}
 
-
-class QtSecondWidget::One_million {
-private:
-	double sx = 4;				//шаг по Х
-	double sy = 6;				//шаг по Y
-	int columnNumber = 0;		//номер колонки с координатой
-	int stringNumber = 0;		//номер строки с координатой
-	int z = 0;					//количество квадратов
-	int m = 0;					//количество строк
-	int n = 0;					//количество столбцов
-	double north_result, south_result, west_result, east_result;
-
-public:
-
-	void coordinateTransformation(double& value, QString side, QtSecondWidget *UU)			//Переводит значения углов в град, мин, сек(целочисленное) и выводит его значение
+void One_million::coordinateTransformation(double& value, QString side, QtSecondWidget* UU)			//Переводит значения углов в град, мин, сек(целочисленное) и выводит его значение
 {
 	int Vgrad, Vmin, Vsec;
 	QString tVgrad, tVmin, tVsec;
@@ -57,93 +54,93 @@ public:
 	else
 		QMessageBox::warning(UU, "Error", "Coordinates output error");
 }
+char One_million::StringNumber(double& x, double& y)			 //определяет номер строки квадрата М 1:1 000 000
+{
+	for (; m < 12;) {			//цикл по строкам
+		double north = (80 - sx * m);
+		double south = (80 - sx - sx * m);
+		if (x >= south && x <= north) {
+			m++;
+			north_result = north;
+			stringNumber = m;
+		}
+		else {
+			m++;
+		}
+	}
+	m = 0;
+	string a("TSRQPONMLKJI");
+	return a[stringNumber - 1];
+}
+int One_million::ColumnNumber(double& x, double& y)			//определяет номер столбца квадрата М 1:1 000 000
+{
+	for (; n < 60;) {		//цикл по столбцам
+		double west = (0 + sy + n * sy);
+		double east = (0 + n * sy);
+		if (y >= east && y <= west) {
+			n++;
+			east_result = east;
+			columnNumber = 30 + n;
+		}
+		else {
+			n++;
+		}
+	}
+	n = 0;
+	return columnNumber;
+}
+double One_million::setBorder(double& x, double& y, QString side)			//определяет границы квадрата М 1:1 000 000
+{
+	for (; n < 60;) {						//цикл по столбцам
+		double west = (0 + sy + n * sy);
+		double east = (0 + n * sy);
+		if (y >= east && y <= west) {
+			n++;
+			west_result = west;
+			east_result = east;
+		}
+		else {
+			n++;
+		}
+	}
+	for (; m < 12;) {						//цикл по строкам
+		double north = (80 - sx * m);
+		double south = (80 - sx - sx * m);
+		if (x >= south && x <= north) {
+			m++;
+			north_result = north;
+			south_result = south;
+		}
+		else {
+			m++;
+		}
+	}
+	m = 0;
+	n = 0;
+	if (side == "north")
+		return north_result;
+	else if (side == "east")
+		return east_result;
+	else if (side == "west")
+		return west_result;
+	else if (side == "south")
+		return south_result;
+	else
+		/*cout << "ERROR\n"*/;
+}
+void One_million::getBorder(double& x, double& y, QtSecondWidget* th_s)			//Выводит значения рамок квадрата
+{
+	double north_border = setBorder(x, y, "north");
+	double south_border = setBorder(x, y, "south");
+	double west_border = setBorder(x, y, "west");
+	double east_border = setBorder(x, y, "east");
+	coordinateTransformation(north_border, "north", th_s);
+	coordinateTransformation(south_border, "south", th_s);
+	coordinateTransformation(west_border, "west", th_s);
+	coordinateTransformation(east_border, "east", th_s);
+}
 
-	char StringNumber(double &x, double &y)			 //определяет номер строки квадрата М 1:1 000 000
-	{
-		for (; m < 12;) {			//цикл по строкам
-			double north = (80 - sx * m);
-			double south = (80 - sx - sx * m);
-			if (x >= south && x <= north) {
-				m++;
-				north_result = north;
-				stringNumber = m;
-			}
-			else {
-				m++;
-			}
-		}
-		m = 0;
-		string a("TSRQPONMLKJI");
-		return a[stringNumber - 1];
-	}
-	int ColumnNumber(double &x, double &y)			//определяет номер столбца квадрата М 1:1 000 000
-	{
-		for (; n < 60;) {		//цикл по столбцам
-			double west = (0 + sy + n * sy);
-			double east = (0 + n * sy);
-			if (y >= east && y <= west) {
-				n++;
-				east_result = east;
-				columnNumber = 30 + n;
-			}
-			else {
-				n++;
-			}
-		}
-		n = 0;
-		return columnNumber;
-	}
-	double setBorder(double &x, double &y, QString side)			//определяет границы квадрата М 1:1 000 000
-	{
-		for (; n < 60;) {						//цикл по столбцам
-			double west = (0 + sy + n * sy);
-			double east = (0 + n * sy);
-			if (y >= east && y <= west) {
-				n++;
-				west_result = west;
-				east_result = east;
-			}
-			else {
-				n++;
-			}
-		}
-		for (; m < 12;) {						//цикл по строкам
-			double north = (80 - sx * m);
-			double south = (80 - sx - sx * m);
-			if (x >= south && x <= north) {
-				m++;
-				north_result = north;
-				south_result = south;
-			}
-			else {
-				m++;
-			}
-		}
-		m = 0;
-		n = 0;
-		if (side == "north")
-			return north_result;
-		else if (side == "east")
-			return east_result;
-		else if (side == "west")
-			return west_result;
-		else if (side == "south")
-			return south_result;
-		else
-			/*cout << "ERROR\n"*/;
-	}
-	void getBorder(double &x, double &y, QtSecondWidget *th_s)			//Выводит значения рамок квадрата
-	{
-		double north_border = setBorder(x, y, "north");
-		double south_border = setBorder(x, y, "south");
-		double west_border = setBorder(x, y, "west");
-		double east_border = setBorder(x, y, "east");
-		coordinateTransformation(north_border, "north", th_s);
-		coordinateTransformation(south_border, "south", th_s);
-		coordinateTransformation(west_border, "west", th_s);
-		coordinateTransformation(east_border, "east", th_s);
-	}
-};
+
 
 QtSecondWidget::QtSecondWidget(double &x, double &y, QWidget *parent)
 	: QWidget(parent)
@@ -154,7 +151,7 @@ QtSecondWidget::QtSecondWidget(double &x, double &y, QWidget *parent)
 	ui.label_X->setText(X.setNum(x));
 	ui.label_Y->setText(Y.setNum(y));
 	
-	One_million MyMapOM;
+	One_million MyMapOM(4, 6, x, y, this);
 	int N2 = MyMapOM.ColumnNumber(x, y);
 	char N1 = MyMapOM.StringNumber(x, y);
 	double east2 = MyMapOM.setBorder(x, y, "east");
@@ -165,6 +162,11 @@ QtSecondWidget::QtSecondWidget(double &x, double &y, QWidget *parent)
 	QN2.setNum(N2);
 	QN_re = QN1 + " - " + QN2;
 	ui.label_nomenclature->setText(QN_re);
+}
+
+
+One_million::~One_million()
+{
 }
 
 QtSecondWidget::~QtSecondWidget()
