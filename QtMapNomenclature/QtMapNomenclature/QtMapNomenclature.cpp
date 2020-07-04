@@ -6,10 +6,10 @@ QtMapNomenclature::QtMapNomenclature(QWidget *parent)
 {
     ui.setupUi(this);
 	
-	connect(ui.M1000000, SIGNAL(clicked()), this, SLOT(one_million_clicked));
+	connect(ui.calculation, SIGNAL(clicked()), this, SLOT(calculation));
 }
 
-void QtMapNomenclature::one_million_clicked()
+void QtMapNomenclature::transformation_of_coordinates(double& x, double& y)
 {
 	//Преобразуем координаты в десятичные значения
 	Xgrad = ui.spinBox_lng_gr->value();
@@ -20,9 +20,21 @@ void QtMapNomenclature::one_million_clicked()
 	Ysec = ui.doubleSpinBox_lt_sec->value();
 	x = Xgrad + (Xmin / 60.) + (Xsec / 3600.);
 	y = Ygrad + (Ymin / 60.) + (Ysec / 3600.);
+}
 
-	//sWidget = new QtSecondWidget(X.setNum(x), Y.setNum(y));				
-	sWidget = new QtSecondWidget(x, y);					//Создаём новое окно, в которое сразу преедаём наши координаты
-	sWidget->show();									//Показываем это окно 												
-
+void QtMapNomenclature::calculation()
+{
+	transformation_of_coordinates(x, y);
+	if (ui.comboBox->currentIndex()==0)
+		QMessageBox::warning(this, "Error", "Select scale");
+	else if (ui.comboBox->currentIndex() == 1)
+	{
+		sWidget = new QtSecondWidget(x, y, "One_million");					//Создаём новое окно, в которое сразу преедаём наши координаты
+		sWidget->show();									//Показываем это окно 	
+	}
+	else if (ui.comboBox->currentIndex() == 2)
+	{
+		sWidget = new QtSecondWidget(x, y, "One_hundred_thousand");					//Создаём новое окно, в которое сразу преедаём наши координаты
+		sWidget->show();									//Показываем это окно 	
+	}
 }

@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
-    <height>601</height>
+    <width>565</width>
+    <height>448</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>565</width>
+    <height>448</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>565</width>
+    <height>448</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>QtMapNomenclature</string>
@@ -19,8 +31,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>641</width>
-      <height>561</height>
+      <width>551</width>
+      <height>411</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -41,7 +53,7 @@
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Map nomenclature&lt;/span&gt; - это программа, которая предназначенна для определения номенклатуры карт различных масштабов и границ их рамок. Работа программы оганичивается следующими границами: &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;СЕВЕР(80°')&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;ЗАПАД (0°) ............. ВОСТОК(180°)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;ЮГ(32°)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Map nomenclature&lt;/span&gt; - это программа, которая предназначенна для определения номенклатуры карт различных масштабов и границ их рамок. Работа программы оганичивается следующими границами: &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;СЕВЕР(80°)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;ЗАПАД (0°) ............. ВОСТОК(180°)&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;ЮГ(32°)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="wordWrap">
         <bool>true</bool>
@@ -50,6 +62,9 @@
      </item>
      <item>
       <widget class="Line" name="line_2">
+       <property name="midLineWidth">
+        <number>2</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -60,13 +75,13 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>45</height>
+         <height>35</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>44</height>
+         <height>35</height>
         </size>
        </property>
        <property name="font">
@@ -84,6 +99,13 @@
       </widget>
      </item>
      <item>
+      <widget class="Line" name="line_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
@@ -92,13 +114,13 @@
         <number>0</number>
        </property>
        <property name="topMargin">
-        <number>10</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
         <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>10</number>
+        <number>0</number>
        </property>
        <item>
         <spacer name="horizontalSpacer_5">
@@ -247,12 +269,19 @@
       </layout>
      </item>
      <item>
+      <widget class="Line" name="line_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="topMargin">
-        <number>10</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>20</number>
+        <number>0</number>
        </property>
        <item>
         <spacer name="horizontalSpacer_6">
@@ -411,201 +440,163 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="scale">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>45</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Выберите масштаб&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
         <number>10</number>
        </property>
-       <item>
-        <widget class="QPushButton" name="M1000000">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>М 1 : 1 000 000</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="M100000">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>М 1 : 100 000</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="M50000">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>М 1 : 50 000</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="M25000">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>М 1 : 25 000</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="spacing">
+       <property name="topMargin">
         <number>10</number>
        </property>
        <item>
-        <widget class="QPushButton" name="M10000">
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="scale">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>60</height>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>245</width>
-           <height>16777215</height>
+           <width>16777215</width>
+           <height>30</height>
           </size>
          </property>
          <property name="font">
           <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <pointsize>13</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>М 1 : 10 000</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Выберите масштаб&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="M5000">
+        <spacer name="horizontalSpacer_10">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>М 1 : 1 000 000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>М 1 : 100 000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>М 1 : 50 000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>М 1 : 25 000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>М 1 : 10 000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>М 1 : 5 000</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>М 1 : 2 000</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="calculation">
          <property name="minimumSize">
           <size>
-           <width>0</width>
-           <height>60</height>
+           <width>110</width>
+           <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>245</width>
-           <height>16777215</height>
+           <width>110</width>
+           <height>30</height>
           </size>
          </property>
          <property name="font">
           <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
-          <string>М 1 : 5 000</string>
+          <string>Расчёт</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="M2000">
-         <property name="minimumSize">
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
           <size>
-           <width>0</width>
-           <height>60</height>
+           <width>40</width>
+           <height>20</height>
           </size>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>245</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>М 1 : 2 000</string>
-         </property>
-        </widget>
+        </spacer>
        </item>
       </layout>
      </item>
@@ -615,19 +606,17 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="QtMapNomenclature.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
-   <sender>M1000000</sender>
+   <sender>calculation</sender>
    <signal>clicked()</signal>
    <receiver>QtMapNomenclatureClass</receiver>
-   <slot>one_million_clicked()</slot>
+   <slot>calculation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>605</y>
+     <x>544</x>
+     <y>412</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -638,5 +627,6 @@
  </connections>
  <slots>
   <slot>one_million_clicked()</slot>
+  <slot>calculation()</slot>
  </slots>
 </ui>

@@ -12,16 +12,17 @@ class QtMapNomenclature : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    QtMapNomenclature(QWidget *parent = Q_NULLPTR);
-    
 private:
     Ui::QtMapNomenclatureClass ui;
-    double x, y;
-    int Xgrad, Xmin, Ygrad, Ymin, Xsec, Ysec;
+    double x, y, Xsec, Ysec;
+    int Xgrad, Xmin, Ygrad, Ymin;
+
+public:
+    QtMapNomenclature(QWidget *parent = Q_NULLPTR);
+    void transformation_of_coordinates(double& x, double& y);
 
 private slots:
-    void one_million_clicked();
+    void calculation();
 
 private:
     QtSecondWidget* sWidget;

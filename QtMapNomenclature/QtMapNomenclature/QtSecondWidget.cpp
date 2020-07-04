@@ -2,16 +2,10 @@
 #include "QtMapNomenclature.h"
 
 
-One_million::One_million(double m_sx, double m_sy, double &x, double &y, QtSecondWidget* UU)
-	: QtSecondWidget(x, y)
+One_million::One_million(double m_sx, double m_sy)
+	: sx(m_sx), sy(m_sy), columnNumber(0), stringNumber(0), z(0), m(0), n(0)
 {
-	sx = m_sx;
-	sy = m_sy;
-	int columnNumber = 0;
-	int stringNumber = 0;
-	int z = 0;
-	int m = 0;
-	int n = 0;
+
 }
 
 void One_million::coordinateTransformation(double& value, QString side, QtSecondWidget* UU)			//Переводит значения углов в град, мин, сек(целочисленное) и выводит его значение
@@ -89,7 +83,7 @@ int One_million::ColumnNumber(double& x, double& y)			//определяет номер столбца
 	n = 0;
 	return columnNumber;
 }
-double One_million::setBorder(double& x, double& y, QString side)			//определяет границы квадрата М 1:1 000 000
+double One_million::setBorder1m(double& x, double& y, QString side)			//определяет границы квадрата М 1:1 000 000
 {
 	for (; n < 60;) {						//цикл по столбцам
 		double west = (0 + sy + n * sy);
@@ -128,12 +122,91 @@ double One_million::setBorder(double& x, double& y, QString side)			//определяет
 	else
 		/*cout << "ERROR\n"*/;
 }
-void One_million::getBorder(double& x, double& y, QtSecondWidget* th_s)			//Выводит значения рамок квадрата
+void One_million::getBorder1m( double& x, double& y, QtSecondWidget* th_s)			//Выводит значения рамок квадрата
 {
-	double north_border = setBorder(x, y, "north");
-	double south_border = setBorder(x, y, "south");
-	double west_border = setBorder(x, y, "west");
-	double east_border = setBorder(x, y, "east");
+	double north_border = setBorder1m(x, y, "north");
+	double south_border = setBorder1m(x, y, "south");
+	double west_border = setBorder1m(x, y, "west");
+	double east_border = setBorder1m(x, y, "east");
+	coordinateTransformation(north_border, "north", th_s);
+	coordinateTransformation(south_border, "south", th_s);
+	coordinateTransformation(west_border, "west", th_s);
+	coordinateTransformation(east_border, "east", th_s);
+}
+
+One_hundred_thousand::One_hundred_thousand(double m_sx, double m_sy)
+	: One_million(m_sx, m_sy)/*, sx(m_sx), sy(m_sy)*/
+{
+	sx = m_sx;
+	sy = m_sy;
+}
+
+int One_hundred_thousand::SquareNumber(double x, double y, double N, double E)			//определяет номер квадрата М 1:100 000
+{
+	for (; m < 12;) {			//цикл по строкам
+		for (; n < 12;) {		//цикл по столбцам
+			double north = (N - sx * m);
+			double south = (N - sx - sx * m);
+			double west = (E + sy + n * sy);
+			double east = (E + n * sy);
+			if (y >= east && y <= west && x >= south && x <= north) {
+				n++;
+				squareNumber = z + n;
+			}
+			else {
+				n++;
+			}
+		}
+		z += n;
+		n = 0;
+		m++;
+	}
+	m = 0;
+	n = 0;
+	return squareNumber;
+}
+double One_hundred_thousand::setBorder(double x, double y, double N, double E, QString side)			//определяет границы квадрата М 1:100 000
+{
+	for (; m < 12;) {			//цикл по строкам
+		for (; n < 12;) {		//цикл по столбцам
+			double north = (N - sx * m);
+			double south = (N - sx - sx * m);
+			double west = (E + sy + n * sy);
+			double east = (E + n * sy);
+			if (y >= east && y <= west && x >= south && x <= north) {
+				n++;
+				north_result = north;
+				south_result = south;
+				west_result = west;
+				east_result = east;
+			}
+			else {
+				n++;
+			}
+		}
+		z += n;
+		n = 0;
+		m++;
+	}
+	m = 0;
+	n = 0;
+	if (side == "north")
+		return north_result;
+	else if (side == "east")
+		return east_result;
+	else if (side == "west")
+		return west_result;
+	else if (side == "south")
+		return south_result;
+	else
+		/*cout << "ERROR\n"*/;
+}
+void One_hundred_thousand::getBorder(double x, double y, double N, double E, QtSecondWidget* th_s)			//Выводит значения рамок квадрата
+{
+	double north_border = setBorder(x, y, N, E, "north");
+	double south_border = setBorder(x, y, N, E, "south");
+	double west_border = setBorder(x, y, N, E, "west");
+	double east_border = setBorder(x, y, N, E, "east");
 	coordinateTransformation(north_border, "north", th_s);
 	coordinateTransformation(south_border, "south", th_s);
 	coordinateTransformation(west_border, "west", th_s);
@@ -141,8 +214,7 @@ void One_million::getBorder(double& x, double& y, QtSecondWidget* th_s)			//Выво
 }
 
 
-
-QtSecondWidget::QtSecondWidget(double &x, double &y, QWidget *parent)
+QtSecondWidget::QtSecondWidget(double &x, double &y, QString scale, QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -150,20 +222,43 @@ QtSecondWidget::QtSecondWidget(double &x, double &y, QWidget *parent)
 	//Выводим координаты в Label
 	ui.label_X->setText(X.setNum(x));
 	ui.label_Y->setText(Y.setNum(y));
-	
-	One_million MyMapOM(4, 6, x, y, this);
+	 
+	One_million MyMapOM(4, 6);
 	int N2 = MyMapOM.ColumnNumber(x, y);
 	char N1 = MyMapOM.StringNumber(x, y);
-	double east2 = MyMapOM.setBorder(x, y, "east");
-	double north2 = MyMapOM.setBorder(x, y, "north");
-	MyMapOM.getBorder(x, y, this);
+	double east2 = MyMapOM.setBorder1m(x, y, "east");
+	double north2 = MyMapOM.setBorder1m(x, y, "north");
+	
+	One_hundred_thousand MyMapOHT(1./3, 0.5);
+	int N3 = MyMapOHT.SquareNumber(x, y, north2, east2);
+	double north3 = MyMapOHT.setBorder(x, y, north2, east2, "north");
+	double east3 = MyMapOHT.setBorder(x, y, north2, east2, "east");
 
+	
 	QN1 = N1;
 	QN2.setNum(N2);
-	QN_re = QN1 + " - " + QN2;
-	ui.label_nomenclature->setText(QN_re);
+	QN_One_million = QN1 + " - " + QN2;
+	QN3.setNum(N3);
+	QN_One_hundred_thousand = QN_One_million + " - " + QN3;
+
+
+	if (scale == "One_million")
+	{
+		ui.label_scale->setText("M 1 : 1 000 000");
+		ui.label_nomenclature->setText(QN_One_million);
+		MyMapOM.getBorder1m(x, y, this);
+	}
+	else if (scale == "One_hundred_thousand")
+	{
+		ui.label_scale->setText("M 1 : 100 000");
+		ui.label_nomenclature->setText(QN_One_hundred_thousand);
+		MyMapOHT.getBorder(x, y, north2, east2, this);
+	}
 }
 
+One_hundred_thousand::~One_hundred_thousand()
+{
+}
 
 One_million::~One_million()
 {
