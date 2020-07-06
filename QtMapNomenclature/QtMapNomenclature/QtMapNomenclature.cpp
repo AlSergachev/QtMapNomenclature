@@ -1,5 +1,5 @@
 #include "QtMapNomenclature.h"
-
+#include <QTextCodec>		///
 
 QtMapNomenclature::QtMapNomenclature(QWidget *parent)
     : QMainWindow(parent)
