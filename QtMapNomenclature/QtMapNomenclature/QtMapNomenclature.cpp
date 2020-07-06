@@ -5,7 +5,6 @@ QtMapNomenclature::QtMapNomenclature(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-	
 	connect(ui.calculation, SIGNAL(clicked()), this, SLOT(calculation));
 }
 
@@ -35,6 +34,31 @@ void QtMapNomenclature::calculation()
 	else if (ui.comboBox->currentIndex() == 2)
 	{
 		sWidget = new QtSecondWidget(x, y, "One_hundred_thousand");					//Создаём новое окно, в которое сразу преедаём наши координаты
+		sWidget->show();									//Показываем это окно 	
+	}
+	else if (ui.comboBox->currentIndex() == 3)
+	{
+		sWidget = new QtSecondWidget(x, y, "Fifty_thousand");					//Создаём новое окно, в которое сразу преедаём наши координаты
+		sWidget->show();									//Показываем это окно 	
+	}
+	else if (ui.comboBox->currentIndex() == 4)
+	{
+		sWidget = new QtSecondWidget(x, y, "Twenty_five_thousand");					//Создаём новое окно, в которое сразу преедаём наши координаты
+		sWidget->show();									//Показываем это окно 	
+	}
+	else if (ui.comboBox->currentIndex() == 5)
+	{
+		sWidget = new QtSecondWidget(x, y, "Ten_thousand");					//Создаём новое окно, в которое сразу преедаём наши координаты
+		sWidget->show();									//Показываем это окно 	
+	}
+	else if (ui.comboBox->currentIndex() == 6)
+	{
+		sWidget = new QtSecondWidget(x, y, "Five_thousand");					//Создаём новое окно, в которое сразу преедаём наши координаты
+		sWidget->show();									//Показываем это окно 	
+	}
+	else if (ui.comboBox->currentIndex() == 7)
+	{
+		sWidget = new QtSecondWidget(x, y, "Two_thousand");					//Создаём новое окно, в которое сразу преедаём наши координаты
 		sWidget->show();									//Показываем это окно 	
 	}
 }

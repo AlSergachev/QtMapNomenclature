@@ -1,9 +1,10 @@
 #include "QtSecondWidget.h"
 #include "QtMapNomenclature.h"
+#include <QTextCodec>
 
 
 One_million::One_million(double m_sx, double m_sy)
-	: sx(m_sx), sy(m_sy), columnNumber(0), stringNumber(0), z(0), m(0), n(0)
+	: sx(m_sx), sy(m_sy), columnNumber(0), stringNumber(0), z(0), m(0), n(0), sheet_size(0)
 {
 
 }
@@ -16,7 +17,11 @@ void One_million::coordinateTransformation(double& value, QString side, QtSecond
 	Vgrad = static_cast<int>(value);
 	Vmin = static_cast<int>((value - Vgrad) * 60);
 	Vsec = round((((value - Vgrad) * 60) - Vmin) * 60);
-
+	if (Vsec == 60)
+	{
+		Vmin += 1;
+		Vsec = 0;
+	}
 	tVgrad.setNum(Vgrad);
 	tVmin.setNum(Vmin);
 	tVsec.setNum(Vsec);
@@ -141,10 +146,10 @@ One_hundred_thousand::One_hundred_thousand(double m_sx, double m_sy)
 	sy = m_sy;
 }
 
-int One_hundred_thousand::SquareNumber(double x, double y, double N, double E)			//определяет номер квадрата М 1:100 000
+int One_hundred_thousand::SquareNumber(double x, double y, double N, double E, size_t sheet_size)			//определяет номер квадрата М 1:100 000
 {
-	for (; m < 12;) {			//цикл по строкам
-		for (; n < 12;) {		//цикл по столбцам
+	for (; m < sheet_size;) {			//цикл по строкам
+		for (; n < sheet_size;) {		//цикл по столбцам
 			double north = (N - sx * m);
 			double south = (N - sx - sx * m);
 			double west = (E + sy + n * sy);
@@ -165,10 +170,10 @@ int One_hundred_thousand::SquareNumber(double x, double y, double N, double E)		
 	n = 0;
 	return squareNumber;
 }
-double One_hundred_thousand::setBorder(double x, double y, double N, double E, QString side)			//определяет границы квадрата М 1:100 000
+double One_hundred_thousand::setBorder(double x, double y, double N, double E, size_t sheet_size, QString side)			//определяет границы квадрата М 1:100 000
 {
-	for (; m < 12;) {			//цикл по строкам
-		for (; n < 12;) {		//цикл по столбцам
+	for (; m < sheet_size;) {			//цикл по строкам
+		for (; n < sheet_size;) {		//цикл по столбцам
 			double north = (N - sx * m);
 			double south = (N - sx - sx * m);
 			double west = (E + sy + n * sy);
@@ -201,16 +206,83 @@ double One_hundred_thousand::setBorder(double x, double y, double N, double E, Q
 	else
 		/*cout << "ERROR\n"*/;
 }
-void One_hundred_thousand::getBorder(double x, double y, double N, double E, QtSecondWidget* th_s)			//Выводит значения рамок квадрата
+void One_hundred_thousand::getBorder(double x, double y, double N, double E, size_t sheet_size, QtSecondWidget* th_s)			//Выводит значения рамок квадрата
 {
-	double north_border = setBorder(x, y, N, E, "north");
-	double south_border = setBorder(x, y, N, E, "south");
-	double west_border = setBorder(x, y, N, E, "west");
-	double east_border = setBorder(x, y, N, E, "east");
+	double north_border = setBorder(x, y, N, E, sheet_size, "north");
+	double south_border = setBorder(x, y, N, E, sheet_size, "south");
+	double west_border = setBorder(x, y, N, E, sheet_size, "west");
+	double east_border = setBorder(x, y, N, E, sheet_size, "east");
 	coordinateTransformation(north_border, "north", th_s);
 	coordinateTransformation(south_border, "south", th_s);
 	coordinateTransformation(west_border, "west", th_s);
 	coordinateTransformation(east_border, "east", th_s);
+}
+
+Fifty_thousand::Fifty_thousand(double m_sx, double m_sy)
+	: One_hundred_thousand(m_sx, m_sy)/*, sx(m_sx), sy(m_sy)*/
+{
+	sx = m_sx;
+	sy = m_sy;
+}
+
+const char Fifty_thousand:: SquareNumber50th(double x, double y, double N, double E)			//определяет номер квадрата М 1:50 000
+{
+	for (; m < 2;) {			//цикл по строкам
+		for (; n < 2;) {		//цикл по столбцам
+			double north = (N - sx * m);
+			double south = (N - sx - sx * m);
+			double west = (E + sy + n * sy);
+			double east = (E + n * sy);
+			if (y >= east && y <= west && x >= south && x <= north) {
+				n++;
+				squareNumber = z + n;
+			}
+			else {
+				n++;
+			}
+		}
+		z += n;
+		n = 0;
+		m++;
+	}
+	const char a[5] = "АБВГ";
+	m = 0;
+	n = 0;
+	return a[squareNumber - 1];															//Убрал "... - 1". Возможна ошибка
+}
+
+Twenty_five_thousand::Twenty_five_thousand(double m_sx, double m_sy)
+	: Fifty_thousand(m_sx, m_sy)/*, sx(m_sx), sy(m_sy)*/
+{
+	sx = m_sx;
+	sy = m_sy;
+}
+
+const char Twenty_five_thousand::SquareNumber25th(double x, double y, double N, double E)			 //определяет номер квадрата М 1:25 000
+{
+	for (; m < 2;) {			//цикл по строкам
+		for (; n < 2;) {		//цикл по столбцам
+			double north = (N - sx * m);
+			double south = (N - sx - sx * m);
+			double west = (E + sy + n * sy);
+			double east = (E + n * sy);
+			if (y >= east && y <= west && x >= south && x <= north) {
+				n++;
+				squareNumber = z + n;
+			}
+			else {
+				n++;
+			}
+		}
+		z += n;
+		n = 0;
+		m++;
+	}
+	const char a[5] = "абвг";
+	//string a("абвг");
+	m = 0;
+	n = 0;
+	return a[squareNumber - 1];
 }
 
 
@@ -230,17 +302,39 @@ QtSecondWidget::QtSecondWidget(double &x, double &y, QString scale, QWidget *par
 	double north2 = MyMapOM.setBorder1m(x, y, "north");
 	
 	One_hundred_thousand MyMapOHT(1./3, 0.5);
-	int N3 = MyMapOHT.SquareNumber(x, y, north2, east2);
-	double north3 = MyMapOHT.setBorder(x, y, north2, east2, "north");
-	double east3 = MyMapOHT.setBorder(x, y, north2, east2, "east");
+	int N3 = MyMapOHT.SquareNumber(x, y, north2, east2, 12);
+	double north3 = MyMapOHT.setBorder(x, y, north2, east2, 12, "north");
+	double east3 = MyMapOHT.setBorder(x, y, north2, east2, 12, "east");
 
-	
+	Fifty_thousand MyMapFfT(1./6, 0.25);
+	const char N4 = MyMapFfT.SquareNumber50th(x, y, north3, east3);
+	double north4 = MyMapFfT.setBorder(x, y, north3, east3, 2, "north");
+	double east4 = MyMapFfT.setBorder(x, y, north3, east3, 2, "east");
+
+	Twenty_five_thousand MyMapTFT(1./12, 1./8);
+	const char N5 = MyMapTFT.SquareNumber25th(x, y, north4, east4);
+	double north5 = MyMapTFT.setBorder(x, y, north4, east4, 2, "north");
+	double east5 = MyMapTFT.setBorder(x, y, north4, east4, 2, "east");
+
+
+
+
+
+
+	QTextCodec* codec = QTextCodec::codecForName("CP 1251");
 	QN1 = N1;
 	QN2.setNum(N2);
 	QN_One_million = QN1 + " - " + QN2;
 	QN3.setNum(N3);
 	QN_One_hundred_thousand = QN_One_million + " - " + QN3;
 
+	char const* N4_codec = &N4;
+	QN4 = codec->toUnicode(N4_codec, strlen(N4_codec));
+	QN_Fifty_thousand = QN_One_hundred_thousand + " - " + QN4[0];
+	
+	char const* N5_codec = &N5;
+	QN5 = codec->toUnicode(N5_codec, strlen(N5_codec));
+	QN_Twenty_five_thousand = QN_Fifty_thousand + " - " + QN5[0];
 
 	if (scale == "One_million")
 	{
@@ -252,8 +346,29 @@ QtSecondWidget::QtSecondWidget(double &x, double &y, QString scale, QWidget *par
 	{
 		ui.label_scale->setText("M 1 : 100 000");
 		ui.label_nomenclature->setText(QN_One_hundred_thousand);
-		MyMapOHT.getBorder(x, y, north2, east2, this);
+		MyMapOHT.getBorder(x, y, north2, east2, 12, this);
 	}
+	else if (scale == "Fifty_thousand")
+	{
+		ui.label_scale->setText("M 1 : 50 000");
+		ui.label_nomenclature->setText(QN_Fifty_thousand);
+		MyMapFfT.getBorder(x, y, north3, east3, 2, this);
+	}
+	else if (scale == "Twenty_five_thousand")
+	{
+		ui.label_scale->setText("M 1 : 25 000");
+		ui.label_nomenclature->setText(QN_Twenty_five_thousand);
+		MyMapTFT.getBorder(x, y, north4, east4, 2, this);
+	}
+}
+
+
+Twenty_five_thousand::~Twenty_five_thousand()
+{
+}
+
+Fifty_thousand::~Fifty_thousand()
+{
 }
 
 One_hundred_thousand::~One_hundred_thousand()
