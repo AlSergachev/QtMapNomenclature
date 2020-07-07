@@ -83,11 +83,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\С++\My_project\QtMapNomenclature\QtMapNomenclature\x64\Debug\uic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\С++\My_project\QtMapNomenclature\QtMapNomenclature\x64\Debug\uic;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="QtHint.cpp" />
     <ClCompile Include="QtSecondWidget.cpp" />
+    <QtUic Include="QtHint.ui" />
     <QtUic Include="QtMapNomenclature.ui" />
     <QtMoc Include="QtMapNomenclature.h" />
     <ClCompile Include="QtMapNomenclature.cpp" />
@@ -96,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtSecondWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="QtHint.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

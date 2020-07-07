@@ -36,6 +36,9 @@
     <QtUic Include="QtSecondWidget.ui">
       <Filter>Resource Files</Filter>
     </QtUic>
+    <QtUic Include="QtHint.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -44,9 +47,15 @@
     <ClCompile Include="QtSecondWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QtHint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtSecondWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QtHint.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

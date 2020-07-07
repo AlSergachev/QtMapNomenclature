@@ -4,7 +4,7 @@
 #include "qmainwindow.h"
 #include "ui_QtMapNomenclature.h"
 #include "QtSecondWidget.h"
-#include <string>
+#include "QtHint.h"
 
 using namespace std;
 
@@ -19,11 +19,13 @@ private:
 
 public:
     QtMapNomenclature(QWidget *parent = Q_NULLPTR);
-    void transformation_of_coordinates(double& x, double& y);
+    void transformation_of_coordinates(double& x, double& y);           //ѕреобразуем координаты в дес€тичные значени€
 
 private slots:
     void calculation();
+    void hint();
 
 private:
+    QtHint* sHint;
     QtSecondWidget* sWidget;
 };
