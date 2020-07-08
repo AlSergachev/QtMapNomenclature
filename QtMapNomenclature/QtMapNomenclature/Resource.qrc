@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/new">
-        <file>png/RW2.png</file>
         <file>png/map.ico</file>
         <file>png/ШД.png</file>
+        <file>png/RW1.png</file>
     </qresource>
 </RCC>

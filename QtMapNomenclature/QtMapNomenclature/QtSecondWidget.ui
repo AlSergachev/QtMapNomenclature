@@ -148,7 +148,7 @@
          <enum>Qt::AutoText</enum>
         </property>
         <property name="pixmap">
-         <pixmap>png/RW1.png</pixmap>
+         <pixmap resource="Resource.qrc">:/new/png/RW1.png</pixmap>
         </property>
        </widget>
       </item>
@@ -652,6 +652,8 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="Resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
