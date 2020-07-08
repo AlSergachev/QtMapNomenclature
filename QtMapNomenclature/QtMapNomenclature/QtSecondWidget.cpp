@@ -42,12 +42,12 @@ void One_million::coordinateTransformation(double& value, QString side, QtSecond
 		UU->ui.label_Sgr->setText(t_v_grad);
 		UU->ui.label_Smin->setText(t_v_min + "' " + t_v_sec + "''");
 	}
-	else if (side == "west")
+	else if (side == "east")
 	{
 		UU->ui.label_Wgr->setText(t_v_grad);
 		UU->ui.label_Wmin->setText(t_v_min + "' " + t_v_sec + "''");
 	}
-	else if (side == "east")
+	else if (side == "west")
 	{
 		UU->ui.label_Egr->setText(t_v_grad);
 		UU->ui.label_Emin->setText(t_v_min + "' " + t_v_sec + "''");
