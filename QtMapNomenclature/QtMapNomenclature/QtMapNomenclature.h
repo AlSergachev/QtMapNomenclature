@@ -14,16 +14,16 @@ class QtMapNomenclature : public QMainWindow
 
 private:
     Ui::QtMapNomenclatureClass ui;
-    double x, y, Xsec, Ysec;
-    int Xgrad, Xmin, Ygrad, Ymin;
+    double x, y, x_sec, y_sec;
+    int x_grad, x_min, y_grad, y_min;
 
 public:
     QtMapNomenclature(QWidget *parent = Q_NULLPTR);
-    void transformation_of_coordinates(double& x, double& y);           //ѕреобразуем координаты в дес€тичные значени€
+    void transformationOfCoordinates(double& x, double& y);           //ѕреобразуем координаты в дес€тичные значени€
 
 private slots:
     void calculation();
-    void hint();
+    void toHelp();
 
 private:
     QtHint* sHint;

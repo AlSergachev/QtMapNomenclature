@@ -4,49 +4,58 @@
 
 
 One_million::One_million(double m_sx, double m_sy)
-	: sx(m_sx), sy(m_sy), columnNumber(0), stringNumber(0), z(0), m(0), n(0), sheet_size(0)
+	: sx(m_sx), sy(m_sy), column_number(0), string_number(0), z(0), m(0), n(0), sheet_size(0)
 {
 }
 
 void One_million::coordinateTransformation(double& value, QString side, QtSecondWidget* UU)			//Переводит значения углов в град, мин, сек(целочисленное) и выводит его значение
 {
-	int Vgrad, Vmin;
-	double Vsec;
-	QString tVgrad, tVmin, tVsec;
+	int v_grad, v_min;
+	double v_sec;
+	QString t_v_grad, t_v_min, t_v_sec;
 
-	Vgrad = static_cast<int>(value);
-	Vmin = static_cast<int>((value - Vgrad) * 60);
-	Vsec = round((((value - Vgrad) * 60) - Vmin) * 60);
-	if (Vsec == 60)
-	{Vmin += 1;		Vsec = 0;}
-	tVgrad.setNum(Vgrad);
-	tVmin.setNum(Vmin);
-	tVsec.setNum(Vsec);
+	v_grad = static_cast<int>(value);
+	v_min = static_cast<int>((value - v_grad) * 60);
+	v_sec = round((((value - v_grad) * 60) - v_min) * 60);
+	if (v_sec == 60)
+	{v_min += 1;		v_sec = 0;}
+
+	t_v_grad.setNum(v_grad);
+
+	if (v_min < 10)
+		t_v_min = "0" + t_v_min.setNum(v_min);
+	else 
+		t_v_min.setNum(v_min);
+
+	if (v_sec < 10)
+		t_v_sec = "0" + t_v_sec.setNum(v_sec);
+	else
+		t_v_sec.setNum(v_sec);
 
 	if (side == "north")
 	{
-		UU->ui.label_Ngr->setText(tVgrad);
-		UU->ui.label_Nmin->setText(tVmin + "' " + tVsec + "''");
+		UU->ui.label_Ngr->setText(t_v_grad);
+		UU->ui.label_Nmin->setText(t_v_min + "' " + t_v_sec + "''");
 	}
 	else if (side == "south")
 	{
-		UU->ui.label_Sgr->setText(tVgrad);
-		UU->ui.label_Smin->setText(tVmin + "' " + tVsec + "''");
+		UU->ui.label_Sgr->setText(t_v_grad);
+		UU->ui.label_Smin->setText(t_v_min + "' " + t_v_sec + "''");
 	}
 	else if (side == "west")
 	{
-		UU->ui.label_Wgr->setText(tVgrad);
-		UU->ui.label_Wmin->setText(tVmin + "' " + tVsec + "''");
+		UU->ui.label_Wgr->setText(t_v_grad);
+		UU->ui.label_Wmin->setText(t_v_min + "' " + t_v_sec + "''");
 	}
 	else if (side == "east")
 	{
-		UU->ui.label_Egr->setText(tVgrad);
-		UU->ui.label_Emin->setText(tVmin + "' " + tVsec + "''");
+		UU->ui.label_Egr->setText(t_v_grad);
+		UU->ui.label_Emin->setText(t_v_min + "' " + t_v_sec + "''");
 	}
 	else
 		QMessageBox::warning(UU, "Error", "Coordinates output error");
 }
-char One_million::StringNumber(double& x, double& y)	
+char One_million::setStringNumber(double& x, double& y)	
 {
 	for (; m < 12;) 			//цикл по строкам
 	{
@@ -55,7 +64,7 @@ char One_million::StringNumber(double& x, double& y)
 		if (x >= south && x <= north) {
 			m++;
 			north_result = north;
-			stringNumber = m;
+			string_number = m;
 		}
 		else {
 			m++;
@@ -63,9 +72,9 @@ char One_million::StringNumber(double& x, double& y)
 	}
 	m = 0;
 	string a("TSRQPONMLKJI");
-	return a[stringNumber - 1];
+	return a[string_number - 1];
 }
-int One_million::ColumnNumber(double& x, double& y)	
+int One_million::setColumnNumber(double& x, double& y)	
 {
 	for (; n < 60;) 		//цикл по столбцам
 	{
@@ -74,14 +83,14 @@ int One_million::ColumnNumber(double& x, double& y)
 		if (y >= east && y <= west) {
 			n++;
 			east_result = east;
-			columnNumber = 30 + n;
+			column_number = 30 + n;
 		}
 		else {
 			n++;
 		}
 	}
 	n = 0;
-	return columnNumber;
+	return column_number;
 }
 double One_million::setBorder1m(double& x, double& y, QString side)
 {
@@ -141,7 +150,7 @@ One_hundred_thousand::One_hundred_thousand(double m_sx, double m_sy)
 	sy = m_sy;
 }
 
-int One_hundred_thousand::SquareNumber(double x, double y, double N, double E, size_t sheet_size)
+int One_hundred_thousand::setSquareNumber(double x, double y, double N, double E, size_t sheet_size)
 {
 	for (; m < sheet_size;) 			//цикл по строкам
 	{
@@ -153,7 +162,7 @@ int One_hundred_thousand::SquareNumber(double x, double y, double N, double E, s
 			double east = (E + n * sy);
 			if (y >= east && y <= west && x >= south && x <= north) {
 				n++;
-				squareNumber = z + n;
+				square_number = z + n;
 			}
 			else {
 				n++;
@@ -165,7 +174,7 @@ int One_hundred_thousand::SquareNumber(double x, double y, double N, double E, s
 	}
 	m = 0;
 	n = 0;
-	return squareNumber;
+	return square_number;
 }
 double One_hundred_thousand::setBorder(double x, double y, double N, double E, size_t sheet_size, QString side)
 {
@@ -222,7 +231,7 @@ Fifty_thousand::Fifty_thousand(double m_sx, double m_sy)
 	sy = m_sy;
 }
 
-const char Fifty_thousand:: SquareNumber50th(double x, double y, double N, double E)
+const char Fifty_thousand:: setSquareNumber50th(double x, double y, double N, double E)
 {
 	for (; m < 2;) 			//цикл по строкам
 	{
@@ -234,7 +243,7 @@ const char Fifty_thousand:: SquareNumber50th(double x, double y, double N, doubl
 			double east = (E + n * sy);
 			if (y >= east && y <= west && x >= south && x <= north) {
 				n++;
-				squareNumber = z + n;
+				square_number = z + n;
 			}
 			else {
 				n++;
@@ -247,7 +256,7 @@ const char Fifty_thousand:: SquareNumber50th(double x, double y, double N, doubl
 	const char a[5] = "АБВГ";
 	m = 0;
 	n = 0;
-	return a[squareNumber - 1];	
+	return a[square_number - 1];	
 }
 
 Twenty_five_thousand::Twenty_five_thousand(double m_sx, double m_sy)
@@ -257,7 +266,7 @@ Twenty_five_thousand::Twenty_five_thousand(double m_sx, double m_sy)
 	sy = m_sy;
 }
 
-const char Twenty_five_thousand::SquareNumber25th(double x, double y, double N, double E)
+const char Twenty_five_thousand::setSquareNumber25th(double x, double y, double N, double E)
 {
 	for (; m < 2;) 			//цикл по строкам
 	{
@@ -269,7 +278,7 @@ const char Twenty_five_thousand::SquareNumber25th(double x, double y, double N, 
 			double east = (E + n * sy);
 			if (y >= east && y <= west && x >= south && x <= north) {
 				n++;
-				squareNumber = z + n;
+				square_number = z + n;
 			}
 			else {
 				n++;
@@ -282,7 +291,7 @@ const char Twenty_five_thousand::SquareNumber25th(double x, double y, double N, 
 	const char a[5] = "абвг";
 	m = 0;
 	n = 0;
-	return a[squareNumber - 1];
+	return a[square_number - 1];
 }
 
 Ten_thousand::Ten_thousand(double m_sx, double m_sy)
@@ -306,7 +315,7 @@ Two_thousand::Two_thousand(double m_sx, double m_sy)
 	sy = m_sy;
 }
 
-const char Two_thousand:: SquareNumber2th(double x, double y, double N, double E)
+const char Two_thousand:: setSquareNumber2th(double x, double y, double N, double E)
 {
 	for (; m < 3;) 			//цикл по строкам
 	{
@@ -318,7 +327,7 @@ const char Two_thousand:: SquareNumber2th(double x, double y, double N, double E
 			double east = (E + n * sy);
 			if (y >= east && y <= west && x >= south && x <= north) {
 				n++;
-				squareNumber = z + n;
+				square_number = z + n;
 			}
 			else {
 				n++;
@@ -331,7 +340,7 @@ const char Two_thousand:: SquareNumber2th(double x, double y, double N, double E
 	const char a[10] = "абвгдежзи";
 	m = 0;
 	n = 0;
-	return a[squareNumber - 1];
+	return a[square_number - 1];
 }
 
 
@@ -342,40 +351,40 @@ QtSecondWidget::QtSecondWidget(double &x, double &y, QString scale, QWidget *par
 
 	QTextCodec* codec = QTextCodec::codecForName("CP 1251");
 	//Выводим координаты в Label
-	ui.label_X->setText("X = " + X.setNum(x));
-	ui.label_Y->setText("Y = " + Y.setNum(y));
+	ui.label_X->setText("B = " + str_x.setNum(x));
+	ui.label_Y->setText("L = " + str_y.setNum(y));
 	 
 	One_million MyMapOM(4, 6);
-	int N2 = MyMapOM.ColumnNumber(x, y);
-	char N1 = MyMapOM.StringNumber(x, y);
+	int N2 = MyMapOM.setColumnNumber(x, y);
+	char N1 = MyMapOM.setStringNumber(x, y);
 	double east2 = MyMapOM.setBorder1m(x, y, "east");
 	double north2 = MyMapOM.setBorder1m(x, y, "north");
 	
 	One_hundred_thousand MyMapOHT(1./3, 0.5);
-	int N3 = MyMapOHT.SquareNumber(x, y, north2, east2, 12);
+	int N3 = MyMapOHT.setSquareNumber(x, y, north2, east2, 12);
 	double north3 = MyMapOHT.setBorder(x, y, north2, east2, 12, "north");
 	double east3 = MyMapOHT.setBorder(x, y, north2, east2, 12, "east");
 
 	Fifty_thousand MyMapFfT(1./6, 0.25);
-	const char N4 = MyMapFfT.SquareNumber50th(x, y, north3, east3);
+	const char N4 = MyMapFfT.setSquareNumber50th(x, y, north3, east3);
 	double north4 = MyMapFfT.setBorder(x, y, north3, east3, 2, "north");
 	double east4 = MyMapFfT.setBorder(x, y, north3, east3, 2, "east");
 
 	Twenty_five_thousand MyMapTFT(1./12, 1./8);
-	const char N5 = MyMapTFT.SquareNumber25th(x, y, north4, east4);
+	const char N5 = MyMapTFT.setSquareNumber25th(x, y, north4, east4);
 	double north5 = MyMapTFT.setBorder(x, y, north4, east4, 2, "north");
 	double east5 = MyMapTFT.setBorder(x, y, north4, east4, 2, "east");
 
 	Ten_thousand MyMapTT(1./24, 1./16);
-	int N6 = MyMapTT.SquareNumber(x, y, north5, east5, 2);
+	int N6 = MyMapTT.setSquareNumber(x, y, north5, east5, 2);
 
 	Five_thousand MyMapFvT(1./48, 1./32);
-	int n4 = MyMapFvT.SquareNumber(x, y, north3, east3, 16);
+	int n4 = MyMapFvT.setSquareNumber(x, y, north3, east3, 16);
 	double north_n4 = MyMapFvT.setBorder(x, y, north3, east3, 16, "north");
 	double east_n4 = MyMapFvT.setBorder(x, y, north3, east3, 16, "east");
 
 	Two_thousand MyMapTwT(1./144, 1./96);
-	const char n5 = MyMapTwT.SquareNumber2th(x, y, north_n4, east_n4);
+	const char n5 = MyMapTwT.setSquareNumber2th(x, y, north_n4, east_n4);
 		
 	QN1 = N1;
 	QN2.setNum(N2);

@@ -179,7 +179,7 @@ P</string>
               </font>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Широта (L):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Широта (B):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -340,7 +340,7 @@ P</string>
               </font>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Долгота (B):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Долгота (L):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -668,15 +668,15 @@ P</string>
    <sender>help</sender>
    <signal>clicked()</signal>
    <receiver>QtMapNomenclatureClass</receiver>
-   <slot>hint()</slot>
+   <slot>toHelp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>21</x>
-     <y>279</y>
+     <x>20</x>
+     <y>295</y>
     </hint>
     <hint type="destinationlabel">
-     <x>18</x>
-     <y>380</y>
+     <x>23</x>
+     <y>371</y>
     </hint>
    </hints>
   </connection>
@@ -684,6 +684,6 @@ P</string>
  <slots>
   <slot>one_million_clicked()</slot>
   <slot>calculation()</slot>
-  <slot>hint()</slot>
+  <slot>toHelp()</slot>
  </slots>
 </ui>

@@ -4,67 +4,72 @@ QtMapNomenclature::QtMapNomenclature(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-	connect(ui.help, SIGNAL(clicked()), this, SLOT(hint));
+	connect(ui.help, SIGNAL(clicked()), this, SLOT(toHelp));
 	connect(ui.calculation, SIGNAL(clicked()), this, SLOT(calculation));
 }
 
-void QtMapNomenclature::transformation_of_coordinates(double& x, double& y)
+void QtMapNomenclature::transformationOfCoordinates(double& x, double& y)
 {
-	Xgrad = ui.spinBox_lng_gr->value();
-	Xmin = ui.spinBox_lng_min->value();
-	Xsec = ui.doubleSpinBox_lng_sec->value();
-	Ygrad = ui.spinBox_lt_gr->value();
-	Ymin = ui.spinBox_lt_min->value();
-	Ysec = ui.doubleSpinBox_lt_sec->value();
-	x = Xgrad + (Xmin / 60.) + (Xsec / 3600.);
-	y = Ygrad + (Ymin / 60.) + (Ysec / 3600.);
+	x_grad = ui.spinBox_lng_gr->value();
+	x_min = ui.spinBox_lng_min->value();
+	x_sec = ui.doubleSpinBox_lng_sec->value();
+	y_grad = ui.spinBox_lt_gr->value();
+	y_min = ui.spinBox_lt_min->value();
+	y_sec = ui.doubleSpinBox_lt_sec->value();
+	x = x_grad + (x_min / 60.) + (x_sec / 3600.);
+	y = y_grad + (y_min / 60.) + (y_sec / 3600.);
 }
 
-void QtMapNomenclature::hint()
+void QtMapNomenclature::toHelp()
 {
 	sHint = new QtHint();
+	sHint->setWindowModality(Qt::ApplicationModal);
+	sHint->setWindowTitle("Help");
+	sHint->setWindowIcon(QIcon(":/new/png/map.ico"));
 	sHint->show();
 }
 
 void QtMapNomenclature::calculation()
 {
-	transformation_of_coordinates(x, y);
-
-	if (ui.comboBox->currentIndex()==0)
+	transformationOfCoordinates(x, y);
+	switch ((ui.comboBox->currentIndex()))
+	{
+	case 0:
 		QMessageBox::warning(this, "Error", "Select scale");
-	else if (ui.comboBox->currentIndex() == 1)
-	{
-		sWidget = new QtSecondWidget(x, y, "One_million");		
-		sWidget->show();								
-	}
-	else if (ui.comboBox->currentIndex() == 2)
-	{
+		break;
+	case 1:
+		sWidget = new QtSecondWidget(x, y, "One_million");
+		sWidget->setWindowTitle("One million");
+		break;
+	case 2:
 		sWidget = new QtSecondWidget(x, y, "One_hundred_thousand");
-		sWidget->show();									
-	}
-	else if (ui.comboBox->currentIndex() == 3)
-	{
-		sWidget = new QtSecondWidget(x, y, "Fifty_thousand");	
-		sWidget->show();									
-	}
-	else if (ui.comboBox->currentIndex() == 4)
-	{
+		sWidget->setWindowTitle("One hundred thousand");
+		break;
+	case 3:
+		sWidget = new QtSecondWidget(x, y, "Fifty_thousand");
+		sWidget->setWindowTitle("Fifty thousand");
+		break;
+	case 4:
 		sWidget = new QtSecondWidget(x, y, "Twenty_five_thousand");
-		sWidget->show();									
+		sWidget->setWindowTitle("Twenty five thousand");
+		break;
+	case 5:
+		sWidget = new QtSecondWidget(x, y, "Ten_thousand");
+		sWidget->setWindowTitle("Ten thousand");
+		break;
+	case 6:
+		sWidget = new QtSecondWidget(x, y, "Five_thousand");
+		sWidget->setWindowTitle("Five thousand");
+		break;
+	case 7:
+		sWidget = new QtSecondWidget(x, y, "Two_thousand");
+		sWidget->setWindowTitle("Two thousand");
+		break;
 	}
-	else if (ui.comboBox->currentIndex() == 5)
+
+	if (ui.comboBox->currentIndex() != 0)
 	{
-		sWidget = new QtSecondWidget(x, y, "Ten_thousand");		
-		sWidget->show();									
-	}
-	else if (ui.comboBox->currentIndex() == 6)
-	{
-		sWidget = new QtSecondWidget(x, y, "Five_thousand");	
-		sWidget->show();									
-	}
-	else if (ui.comboBox->currentIndex() == 7)
-	{
-		sWidget = new QtSecondWidget(x, y, "Two_thousand");		
-		sWidget->show();								
+		sWidget->setWindowIcon(QIcon(":/new/png/map.ico"));
+		sWidget->show();
 	}
 }
