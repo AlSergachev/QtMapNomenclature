@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string>QtHint</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="image">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -39,6 +39,9 @@
    </property>
    <property name="pixmap">
     <pixmap>png/ШД.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

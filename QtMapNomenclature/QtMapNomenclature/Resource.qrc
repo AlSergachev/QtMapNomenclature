@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/new">
-        <file>png/map.ico</file>
-        <file>png/ШД.png</file>
-        <file>png/file96.png</file>
-    </qresource>
-</RCC>

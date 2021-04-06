@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>QtMapNomenclatureClass</class>
- <widget class="QMainWindow" name="QtMapNomenclatureClass">
+ <class>QtMapNomenclature</class>
+ <widget class="QMainWindow" name="QtMapNomenclature">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -539,6 +539,12 @@ P</string>
        </item>
        <item>
         <widget class="QComboBox" name="comboBox">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>25</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -649,34 +655,34 @@ P</string>
  <resources/>
  <connections>
   <connection>
-   <sender>calculation</sender>
+   <sender>help</sender>
    <signal>clicked()</signal>
-   <receiver>QtMapNomenclatureClass</receiver>
-   <slot>calculation()</slot>
+   <receiver>QtMapNomenclature</receiver>
+   <slot>toHelp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>544</x>
-     <y>378</y>
+     <x>28</x>
+     <y>239</y>
     </hint>
     <hint type="destinationlabel">
-     <x>7</x>
-     <y>410</y>
+     <x>94</x>
+     <y>371</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>help</sender>
+   <sender>calculation</sender>
    <signal>clicked()</signal>
-   <receiver>QtMapNomenclatureClass</receiver>
-   <slot>toHelp()</slot>
+   <receiver>QtMapNomenclature</receiver>
+   <slot>calculation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>295</y>
+     <x>437</x>
+     <y>358</y>
     </hint>
     <hint type="destinationlabel">
-     <x>23</x>
-     <y>371</y>
+     <x>398</x>
+     <y>331</y>
     </hint>
    </hints>
   </connection>
