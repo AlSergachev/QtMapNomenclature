@@ -103,6 +103,7 @@ double One_million::setBorder1m(double& x, double& y, QString side)
             n++;
             west_result = west;
             east_result = east;
+            break;
         }
         else {
             n++;
@@ -116,6 +117,7 @@ double One_million::setBorder1m(double& x, double& y, QString side)
             m++;
             north_result = north;
             south_result = south;
+            break;
         }
         else {
             m++;
@@ -133,6 +135,7 @@ double One_million::setBorder1m(double& x, double& y, QString side)
         return south_result;
     return 0;
 }
+
 void One_million::getBorder1m( double& x, double& y, QtSecondWidget* th_s)
 {
     double north_border = setBorder1m(x, y, "north");
@@ -152,7 +155,7 @@ One_hundred_thousand::One_hundred_thousand(double m_sx, double m_sy)
     sy = m_sy;
 }
 
-int One_hundred_thousand::setSquareNumber(double x, double y, double N, double E, size_t sheet_size)
+int One_hundred_thousand::setSquareNumber(double x, double y, double N, double E, int sheet_size)
 {
     for (; m < sheet_size;) 			//öèêë ïî ñòðîêàì
     {
@@ -178,7 +181,7 @@ int One_hundred_thousand::setSquareNumber(double x, double y, double N, double E
     n = 0;
     return square_number;
 }
-double One_hundred_thousand::setBorder(double x, double y, double N, double E, size_t sheet_size, QString side)
+double One_hundred_thousand::setBorder(double x, double y, double N, double E, int sheet_size, QString side)
 {
     for (; m < sheet_size;) 			//öèêë ïî ñòðîêàì
     {
@@ -194,6 +197,7 @@ double One_hundred_thousand::setBorder(double x, double y, double N, double E, s
                 south_result = south;
                 west_result = west;
                 east_result = east;
+                break;
             }
             else {
                 n++;
@@ -215,7 +219,7 @@ double One_hundred_thousand::setBorder(double x, double y, double N, double E, s
         return south_result;
     return 0;
 }
-void One_hundred_thousand::getBorder(double x, double y, double N, double E, size_t sheet_size, QtSecondWidget* th_s)
+void One_hundred_thousand::getBorder(double x, double y, double N, double E, int sheet_size, QtSecondWidget* th_s)
 {
     double north_border = setBorder(x, y, N, E, sheet_size, "north");
     double south_border = setBorder(x, y, N, E, sheet_size, "south");
@@ -234,38 +238,9 @@ Fifty_thousand::Fifty_thousand(double m_sx, double m_sy)
     sy = m_sy;
 }
 
-/*
-const char Fifty_thousand:: setSquareNumber50th(double x, double y, double N, double E)
-{
-    for (; m < 2;) 			//öèêë ïî ñòðîêàì
-    {
-        for (; n < 2;) 		//öèêë ïî ñòîëáöàì
-        {
-            double north = (N - sx * m);
-            double south = (N - sx - sx * m);
-            double west = (E + sy + n * sy);
-            double east = (E + n * sy);
-            if (y >= east && y <= west && x >= south && x <= north) {
-                n++;
-                square_number = z + n;
-            }
-            else {
-                n++;
-            }
-        }
-        z += n;
-        n = 0;
-        m++;
-    }
-    const char a[10] = "АБВГ"; //"ÀÁÂÃ";
-    m = 0;
-    n = 0;
-    return a[square_number - 1];
-}
-*/
-
 wchar_t Fifty_thousand::setSquareNumber50th(double x, double y, double N, double E)
 {
+
     for (; m < 2;) 			//öèêë ïî ñòðîêàì
     {
         for (; n < 2;) 		//öèêë ïî ñòîëáöàì

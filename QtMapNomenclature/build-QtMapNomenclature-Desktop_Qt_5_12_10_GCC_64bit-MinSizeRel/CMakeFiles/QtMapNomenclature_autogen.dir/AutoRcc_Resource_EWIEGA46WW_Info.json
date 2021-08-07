@@ -1,0 +1,27 @@
+{
+	"BUILD_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/QtMapNomenclature_autogen",
+	"CMAKE_BINARY_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/alex/_project/QtMapNomenclature/QtMapNomenclature",
+	"CMAKE_SOURCE_DIR" : "/home/alex/_project/QtMapNomenclature/QtMapNomenclature",
+	"INCLUDE_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/QtMapNomenclature_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/png/RW1.png",
+		"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/png/file96.png",
+		"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/png/map.ico",
+		"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/png/RW3.png",
+		"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/png/RW2.png",
+		"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/png/ШД.png"
+	],
+	"LOCK_FILE" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/CMakeFiles/QtMapNomenclature_autogen.dir/AutoRcc_Resource_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "Resource" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_Resource.cpp",
+	"RCC_EXECUTABLE" : "/home/alex/Qt5.12.10/5.12.10/gcc_64/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/CMakeFiles/QtMapNomenclature_autogen.dir/AutoRcc_Resource_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/alex/_project/QtMapNomenclature/QtMapNomenclature/Resource.qrc",
+	"VERBOSITY" : 0
+}

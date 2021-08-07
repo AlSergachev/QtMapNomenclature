@@ -1,4 +1,4 @@
-#include "qtmapnomenclature.h"
+﻿#include "qtmapnomenclature.h"
 #include "ui_qtmapnomenclature.h"
 
 QtMapNomenclature::QtMapNomenclature(QWidget *parent)
@@ -6,8 +6,8 @@ QtMapNomenclature::QtMapNomenclature(QWidget *parent)
     , ui(new Ui::QtMapNomenclature)
 {
     ui->setupUi(this);
-    connect(ui->help, SIGNAL(clicked()), this, SLOT(toHelp));
-    connect(ui->calculation, SIGNAL(clicked()), this, SLOT(calculation));
+    connect(ui->help, SIGNAL(clicked()), this, SLOT(toHelp()));
+    connect(ui->calculation, SIGNAL(clicked()), this, SLOT(calculation()));
 }
 
 void QtMapNomenclature::transformationOfCoordinates(double&, double&)
@@ -26,7 +26,7 @@ void QtMapNomenclature::transformationOfCoordinates(double&, double&)
 void QtMapNomenclature::toHelp()
 {
     sHint = new QtHint();
-    sHint->setWindowModality(Qt::ApplicationModal);
+    //sHint->setWindowModality(Qt::ApplicationModal);
     sHint->setWindowTitle("Help");
     sHint->setWindowIcon(QIcon(":/new/png/map.ico"));
     sHint->show();

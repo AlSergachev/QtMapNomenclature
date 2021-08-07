@@ -1,0 +1,99 @@
+{
+	"BUILD_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/QtMapNomenclature_autogen",
+	"CMAKE_BINARY_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/alex/_project/QtMapNomenclature/QtMapNomenclature",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_SOURCE_DIR" : "/home/alex/_project/QtMapNomenclature/QtMapNomenclature",
+	"HEADERS" : 
+	[
+		[
+			"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/qthint.h",
+			"MU",
+			"EWIEGA46WW/moc_qthint.cpp"
+		],
+		[
+			"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/qtmapnomenclature.h",
+			"MU",
+			"EWIEGA46WW/moc_qtmapnomenclature.cpp"
+		],
+		[
+			"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/qtsecondwidget.h",
+			"MU",
+			"EWIEGA46WW/moc_qtsecondwidget.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/QtMapNomenclature_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/QtMapNomenclature_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_NO_DEBUG", "QT_WIDGETS_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel",
+		"/home/alex/_project/QtMapNomenclature/QtMapNomenclature",
+		"/home/alex/Qt5.12.10/5.12.10/gcc_64/include",
+		"/home/alex/Qt5.12.10/5.12.10/gcc_64/include/QtWidgets",
+		"/home/alex/Qt5.12.10/5.12.10/gcc_64/include/QtGui",
+		"/home/alex/Qt5.12.10/5.12.10/gcc_64/include/QtCore",
+		"/home/alex/Qt5.12.10/5.12.10/gcc_64/mkspecs/linux-g++",
+		"/usr/include",
+		"/usr/include/c++/9",
+		"/usr/include/x86_64-linux-gnu/c++/9",
+		"/usr/include/c++/9/backward",
+		"/usr/local/include",
+		"/usr/lib/llvm-10/lib/clang/10.0.0/include",
+		"/usr/include/x86_64-linux-gnu"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/clang++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/QtMapNomenclature_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/CMakeFiles/QtMapNomenclature_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/home/alex/Qt5.12.10/5.12.10/gcc_64/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/home/alex/Qt5.12.10/5.12.10/gcc_64/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"SETTINGS_FILE" : "/home/alex/_project/build-QtMapNomenclature-Desktop_Qt_5_12_10_GCC_64bit-MinSizeRel/CMakeFiles/QtMapNomenclature_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/main.cpp",
+			"MU"
+		],
+		[
+			"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/qthint.cpp",
+			"MU"
+		],
+		[
+			"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/qtmapnomenclature.cpp",
+			"MU"
+		],
+		[
+			"/home/alex/_project/QtMapNomenclature/QtMapNomenclature/qtsecondwidget.cpp",
+			"MU"
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

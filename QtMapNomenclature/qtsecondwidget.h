@@ -41,7 +41,7 @@ protected:
     int z;							//êîëè÷åñòâî êâàäðàòîâ
     int m;							//êîëè÷åñòâî ñòðîê
     int n;							//êîëè÷åñòâî ñòîëáöîâ
-    size_t sheet_size;				//êîëè÷åñòâî ñòðîê.ñòîëáöîâ êâàäðàòà
+    int sheet_size;				//êîëè÷åñòâî ñòðîê.ñòîëáöîâ êâàäðàòà
     double north_result, south_result, west_result, east_result;
 
 public:
@@ -63,9 +63,9 @@ public:
     One_hundred_thousand(double m_sx, double m_sy);
     ~One_hundred_thousand();
 
-    int setSquareNumber(double x, double y, double N, double E, size_t sheet_size);						//Oïðåäåëÿåò íîìåð êâàäðàòà
-    double setBorder(double x, double y, double N, double E, size_t sheet_size, QString side);			//Oïðåäåëÿåò ãðàíèöû êâàäðàòà
-    void getBorder(double x, double y, double N, double E, size_t sheet_size, QtSecondWidget* th_s);	//Âûâîäèò çíà÷åíèÿ ðàìîê êâàäðàòà
+    int setSquareNumber(double x, double y, double N, double E, int sheet_size);						//Oïðåäåëÿåò íîìåð êâàäðàòà
+    double setBorder(double x, double y, double N, double E, int sheet_size, QString side);			//Oïðåäåëÿåò ãðàíèöû êâàäðàòà
+    void getBorder(double x, double y, double N, double E, int sheet_size, QtSecondWidget* th_s);	//Âûâîäèò çíà÷åíèÿ ðàìîê êâàäðàòà
 };
 
 class Fifty_thousand: public One_hundred_thousand
